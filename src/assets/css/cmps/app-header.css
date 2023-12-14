@@ -1,0 +1,31 @@
+.app-header {
+    background: cornflowerblue;
+    color: white;
+}
+
+.app-header section.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.app-header h1.logo {
+    flex-grow: 1;
+    font-weight: 600;
+}
+
+.app-header .back {
+    flex-grow: 1;
+}
+
+nav {
+    margin-left: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+
+.app-header section.container>section {
+    flex-grow: 1;
+}

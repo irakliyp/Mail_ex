@@ -1,0 +1,55 @@
+.navigation-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+}
+
+.horizontal-line {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: 1px solid black;
+}
+
+section .navigation {
+    display: grid;
+    gap: 10px;
+}
+
+.btn-compose {
+    width: 100px;
+    height: 50px;
+    border: #5edbff solid 1px;
+    border-radius: 10px;
+    background-color: #5edbff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+img.icon {
+    width: 20px;
+    mask-repeat: no-repeat;
+}
+
+.btn-navigation-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+
+}
+
+.btn-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    background-color: inherit;
+}
+
+.btn-navigation:hover {
+    background-color: #5edbff;
+
+}
