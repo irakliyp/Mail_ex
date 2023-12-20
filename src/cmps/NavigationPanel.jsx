@@ -6,7 +6,7 @@ import TrashImg from '../assets/imgs/trash.png'
 import SentImg from '../assets/imgs/sent.png'
 import {NavigationButton} from "./NavigationButton";
 
-export function NavigationPanel({inbox, starred, sent, draft, trash, onNavigationChange }) {
+export function NavigationPanel({inbox, starred, sent, draft, trash, onNavigationChange, emailsListLabel }) {
 
     return <section className="navigation-panel">
         <button className="btn-compose">
@@ -15,11 +15,11 @@ export function NavigationPanel({inbox, starred, sent, draft, trash, onNavigatio
         </button>
         <div className="horizontal-line"/>
         <section className="navigation">
-            <NavigationButton label="Inbox" src={InboxImg} amount={inbox} onNavigationChange={onNavigationChange}/>
-            <NavigationButton label="Starred" src={StarImg} amount={starred} onNavigationChange={onNavigationChange}/>
-            <NavigationButton label="Sent" src={SentImg} amount={sent} onNavigationChange={onNavigationChange}/>
-            <NavigationButton label="Draft" src={DraftImg} amount={draft} onNavigationChange={onNavigationChange}/>
-            <NavigationButton label="Trash" src={TrashImg} amount={trash} onNavigationChange={onNavigationChange}/>
+            <NavigationButton label="Inbox" src={InboxImg} amount={inbox} onNavigationChange={onNavigationChange} selected={emailsListLabel==='inbox'}/>
+            <NavigationButton label="Starred" src={StarImg} amount={starred} onNavigationChange={onNavigationChange} selected={emailsListLabel==='starred'}/>
+            <NavigationButton label="Sent" src={SentImg} amount={sent} onNavigationChange={onNavigationChange} selected={emailsListLabel==='sent'}/>
+            <NavigationButton label="Draft" src={DraftImg} amount={draft} onNavigationChange={onNavigationChange} selected={emailsListLabel==='draft'}/>
+            <NavigationButton label="Trash" src={TrashImg} amount={trash} onNavigationChange={onNavigationChange} selected={emailsListLabel==='trash'}/>
         </section>
     </section>
 }
