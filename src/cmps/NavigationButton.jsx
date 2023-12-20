@@ -1,7 +1,10 @@
+import {useState} from "react";
 
-export function NavigationButton({ label, src, amount, onNavigationChange }) {
+export function NavigationButton({ label, src, amount, onNavigationChange, selected }) {
 
-    return <button className="btn-navigation" onClick={() => {onNavigationChange(label)}}>
+    const btnNavClassName = `btn-navigation${selected ? ' selected' : ''}`
+
+    return <button className={btnNavClassName} onClick={() => onNavigationChange(label)}>
         <div className="btn-navigation-container">
             <img src={src} className="icon"/>
             <span>{label}</span>

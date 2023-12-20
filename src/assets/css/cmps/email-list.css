@@ -29,3 +29,28 @@
 .unread {
     background-color: #ccf1ff;
 }
+
+.email-preview {
+    display: grid;
+    grid-auto-columns: auto auto 1fr;
+    gap: 10px;
+    padding: 10px 60px;
+    background-color: lightgray;
+    border: #6c747a 1px solid;
+}
+
+.email-preview-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.email-preview-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.email-preview-body {
+    margin-left: 20px;
+}

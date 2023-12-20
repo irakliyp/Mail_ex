@@ -49,7 +49,12 @@ img.icon {
     background-color: inherit;
 }
 
-.btn-navigation:hover {
+.btn-navigation.selected {
     background-color: #5edbff;
+}
+
+.btn-navigation:hover {
+    background-color: #6c747a;
+    color: snow;
 
 }

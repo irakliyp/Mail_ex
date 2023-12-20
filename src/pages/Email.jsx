@@ -10,7 +10,7 @@ import NoRecords from '../assets/imgs/no-records.png'
 export function Email() {
 
     const [emails, setEmails] = useState(null)
-    const [emailsList, setEmailsList] = useState(null)
+    const [emailsListLabel, setEmailsListLabel] = useState('inbox')
 
     useEffect(() => {
         loadEmails();
@@ -18,12 +18,11 @@ export function Email() {
 
     useEffect(() => {
         if(emails) {
-            console.log(emails)
-            if(emailsList) {
-                setEmailsList(emailsList)
+            if(emailsListLabel) {
+                setEmailsListLabel(emailsListLabel)
             }
             else {
-                setEmailsList(emails.inbox)
+                setEmailsListLabel('inbox')
             }
         }
     }, [emails])
@@ -35,24 +34,8 @@ export function Email() {
     }
 
     function onNavigationChange(selected) {
-        switch (selected.toLowerCase()) {
-            case 'inbox':
-                setEmailsList(emails.inbox)
-                break;
-            case 'starred':
-                setEmailsList(emails.starred)
-                break;
-            case 'sent':
-                setEmailsList(emails.sent)
-                break;
-            case 'draft':
-                setEmailsList(emails.draft)
-                break;
-            case 'trash':
-                setEmailsList(emails.trash)
-                break;
+        setEmailsListLabel(selected.toLowerCase());
 
-        }
     }
 
     async function onEmailChange(email) {
@@ -65,8 +48,10 @@ export function Email() {
         loadEmails();
     }
 
-    if(!emails || !emailsList) return <div>Loading...</div>
+    if(!emails) return <div>Loading...</div>
     const { inbox, starred, draft, sent, trash } = emails;
+
+    const emailsList = Object.entries(emails).find((item) =>{return item[0]===emailsListLabel}).pop()
 
     return (
         <section className="email">
@@ -77,6 +62,7 @@ export function Email() {
                     sent={sent.length}
                     draft={draft.length}
                     trash={trash.length}
+                    emailsListLabel={emailsListLabel}
                     onNavigationChange={onNavigationChange}
                 />
             </section>
