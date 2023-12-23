@@ -1,10 +1,13 @@
-import Starred from '../assets/imgs/starred.png'
-import Star from '../assets/imgs/star.png'
-import Unread from '../assets/imgs/unread.png'
-import Share from '../assets/imgs/share.png'
-import Trash from '../assets/imgs/trash.png'
 import {useState} from "react";
 import {EmailPreview} from "./EmailPreview";
+import { CiStar } from "react-icons/ci";
+import { FaStar } from "react-icons/fa";
+import { MdIosShare } from "react-icons/md";
+import { MdMarkEmailUnread } from "react-icons/md";
+import { FaRegTrashAlt } from "react-icons/fa";
+
+
+
 
 export function EmailItem({ email, onEmailChange, onRemoveClick }) {
     const {
@@ -44,7 +47,6 @@ export function EmailItem({ email, onEmailChange, onRemoveClick }) {
         onRead(true, ev);
     }
 
-    const dynStarSrc = isStarred? Starred : Star;
     const sentDate = new Date(sentAt).toDateString()
     const recordClass = `email-record${read? '' : ' unread'}`
 
@@ -54,15 +56,18 @@ export function EmailItem({ email, onEmailChange, onRemoveClick }) {
             onMouseEnter={() => onHover(true)}
             onMouseLeave={() => onHover(false)}
             onClick={onClick}>
-            <img src={dynStarSrc} className="icon grid-col-1" onClick={(ev) => onStar(ev)}/>
+            {isStarred ?
+                <CiStar onClick={onStar}/> :
+                <FaStar onClick={onStar}/>
+            }
             <p className="grid-col-2">{from}</p>
             <p className="grid-col-3">{subject}</p>
             {!hovered?
             <p className="grid-col-4">{sentDate}</p> :
                 <p className="icons grid-col-4">
-                    <img src={Share} className="icon"/>
-                    <img src={Unread} className="icon" onClick={(ev) => onRead(false, ev)}/>
-                    <img src={Trash} className="icon" onClick={(ev)=> {onRemove(ev)}}/>
+                    <MdIosShare/>
+                    <MdMarkEmailUnread onClick={event => onRead(false, event)}/>
+                    <FaRegTrashAlt onClick={onRemove}/>
                 </p>
             }
         </section>

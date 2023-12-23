@@ -1,0 +1,12 @@
+
+.email-filter {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.email-filter-text {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}

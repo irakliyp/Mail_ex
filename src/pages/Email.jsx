@@ -11,6 +11,7 @@ export function Email() {
 
     const [emails, setEmails] = useState(null)
     const [emailsListLabel, setEmailsListLabel] = useState('inbox')
+    const [filterBy, setFilterBy] = useState({byText: '', byRead: 'all'})
 
     useEffect(() => {
         loadEmails();
@@ -28,7 +29,7 @@ export function Email() {
     }, [emails])
 
     async function loadEmails() {
-        const notCataloged = await emailService.query()
+        const notCataloged = await emailService.query(filterBy)
         const emails = emailService.catalog(notCataloged)
         setEmails(emails)
     }
