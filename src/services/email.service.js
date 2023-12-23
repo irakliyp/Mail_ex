@@ -15,15 +15,16 @@ const STORAGE_KEY = 'emails'
 _createRobots()
 
 async function query(filterBy) {
-    const emails = await storageService.query(STORAGE_KEY)
-    // if (filterBy) {
-    //     var { type, maxBatteryStatus, minBatteryStatus, model } = filterBy
-    //     maxBatteryStatus = maxBatteryStatus || Infinity
-    //     minBatteryStatus = minBatteryStatus || 0
-    //     robots = robots.filter(robot => robot.type.toLowerCase().includes(type.toLowerCase()) && robot.model.toLowerCase().includes(model.toLowerCase())
-    //         && (robot.batteryStatus < maxBatteryStatus)
-    //         && robot.batteryStatus > minBatteryStatus)
-    // }
+    let emails = await storageService.query(STORAGE_KEY)
+    if (filterBy) {
+        const { byText, byRead } = filterBy;
+        if(byRead !== 'all') {
+            emails = emails.filter((email => email.isRead === byRead))
+        }
+        if(byText !== '') {
+            emails = emails.filter((email => email.subject.includes(byText) || email.body.includes(byText)));
+        }
+    }
     return emails
 }
 

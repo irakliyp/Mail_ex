@@ -1,7 +1,8 @@
-import Trash from '../assets/imgs/trash.png'
-import Reply from '../assets/imgs/reply.png'
-import Send from '../assets/imgs/send.png'
-import Expand from '../assets/imgs/expand.png'
+import { FaRegTrashAlt } from "react-icons/fa";
+import { IoIosSend } from "react-icons/io";
+import { RiFullscreenLine } from "react-icons/ri";
+import { FaReply } from "react-icons/fa";
+
 
 
 export function EmailPreview({email, onRemove}) {
@@ -13,10 +14,10 @@ export function EmailPreview({email, onRemove}) {
         <section className="email-preview-title">
             <p className="email-preview-subject">{subject}</p>
             <section className="email-preview-actions">
-                <img src={Expand} className="icon"/>
-                <img src={Reply} className="icon"/>
-                <img src={Send} className="icon"/>
-                <img src={Trash} className="icon" onClick={onRemove}/>
+                <RiFullscreenLine/>
+                <FaReply/>
+                <IoIosSend/>
+                <FaRegTrashAlt/>
             </section>
         </section>
         <p className="email-preview-from">From: {from}</p>

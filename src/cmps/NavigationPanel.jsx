@@ -15,11 +15,11 @@ export function NavigationPanel({inbox, starred, sent, draft, trash, onNavigatio
         </button>
         <div className="horizontal-line"/>
         <section className="navigation">
-            <NavigationButton label="Inbox" src={InboxImg} amount={inbox} onNavigationChange={onNavigationChange} selected={emailsListLabel==='inbox'}/>
-            <NavigationButton label="Starred" src={StarImg} amount={starred} onNavigationChange={onNavigationChange} selected={emailsListLabel==='starred'}/>
-            <NavigationButton label="Sent" src={SentImg} amount={sent} onNavigationChange={onNavigationChange} selected={emailsListLabel==='sent'}/>
-            <NavigationButton label="Draft" src={DraftImg} amount={draft} onNavigationChange={onNavigationChange} selected={emailsListLabel==='draft'}/>
-            <NavigationButton label="Trash" src={TrashImg} amount={trash} onNavigationChange={onNavigationChange} selected={emailsListLabel==='trash'}/>
+            <NavigationButton label="Inbox" amount={inbox} onNavigationChange={onNavigationChange} selected={emailsListLabel==='inbox'}/>
+            <NavigationButton label="Starred" amount={starred} onNavigationChange={onNavigationChange} selected={emailsListLabel==='starred'}/>
+            <NavigationButton label="Sent" amount={sent} onNavigationChange={onNavigationChange} selected={emailsListLabel==='sent'}/>
+            <NavigationButton label="Draft" amount={draft} onNavigationChange={onNavigationChange} selected={emailsListLabel==='draft'}/>
+            <NavigationButton label="Trash" amount={trash} onNavigationChange={onNavigationChange} selected={emailsListLabel==='trash'}/>
         </section>
     </section>
 }
