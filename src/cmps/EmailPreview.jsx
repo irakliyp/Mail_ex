@@ -17,7 +17,7 @@ export function EmailPreview({email, onRemove}) {
                 <RiFullscreenLine/>
                 <FaReply/>
                 <IoIosSend/>
-                <FaRegTrashAlt/>
+                <FaRegTrashAlt onClick={onRemove}/>
             </section>
         </section>
         <p className="email-preview-from">From: {from}</p>

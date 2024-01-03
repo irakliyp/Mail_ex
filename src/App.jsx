@@ -2,6 +2,7 @@ import {Route, HashRouter as Router, Routes, Link, NavLink} from "react-router-d
 import { Home } from './pages/Home';
 import {Email} from "./pages/Email";
 import {AppHeader} from "./cmps/AppHeader";
+import {EmailsList} from "./cmps/EmailsList";
 export function App() {
 
     return (
@@ -11,7 +12,13 @@ export function App() {
             <main className='container'>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="/email" element={<Email/>}/>
+                    <Route path="/email" element={<Email/>}>
+                        <Route path="/email/inbox" element={<EmailsList/>}/>
+                        <Route path="/email/sent" element={<EmailsList/>}/>
+                        <Route path="/email/draft" element={<EmailsList/>}/>
+                        <Route path="/email/trash" element={<EmailsList/>}/>
+                        <Route path="/email/starred" element={<EmailsList/>}/>
+                    </Route>
                 </Routes>
             </main>
 

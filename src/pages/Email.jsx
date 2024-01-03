@@ -4,6 +4,8 @@ import {useEffect, useState} from "react";
 import {EmailsList} from "../cmps/EmailsList";
 import {EmailsFilter} from "../cmps/EmailsFilter";
 import NoRecords from '../assets/imgs/no-records.png'
+import {Link, Outlet} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -12,6 +14,7 @@ export function Email() {
     const [emails, setEmails] = useState(null)
     const [emailsListLabel, setEmailsListLabel] = useState('inbox')
     const [filterBy, setFilterBy] = useState({byText: '', byRead: 'all'})
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadEmails();
@@ -27,6 +30,10 @@ export function Email() {
             }
         }
     }, [emails])
+
+    useEffect(() => {
+        navigate(`/email/${emailsListLabel}`)
+    }, [emailsListLabel])
 
     async function loadEmails() {
         const notCataloged = await emailService.query(filterBy)
@@ -68,12 +75,12 @@ export function Email() {
                 />
             </section>
 
-            <section>
+            <section className="filter">
                 <EmailsFilter/>
                 {!emailsList.length ?
                     <img src={NoRecords}/> :
-                    <EmailsList emailsList={emailsList} onEmailChange={onEmailChange} onRemoveClick={onRemoveClick}/>
-                }
+                    <Outlet context={{emails, onEmailChange, onRemoveClick}}/>}
+                    {/*<EmailsList emailsList={emailsList} onEmailChange={onEmailChange} onRemoveClick={onRemoveClick}/>*/}
             </section>
         </section>
     )

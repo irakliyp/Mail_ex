@@ -1,4 +1,6 @@
-
+.filter {
+    margin-top: 56px;
+}
 .email-filter {
     display: flex;
     gap: 25px;
@@ -6,7 +8,26 @@
 }
 
 .email-filter-text {
+    position: fixed;
+    width: 500px;
+    height: 30px;
+    top: 95px;
     display: flex;
-    gap: 6px;
+    gap: 10px;
     align-items: center;
+    border: #6c747a 1px solid;
+    border-radius: 15px;
+    padding-left: 10px;
+}
+
+.email-filter-text-input {
+    border: none;
+}
+
+.email-filter-text-icon {
+    opacity: 0.7;
+}
+
+.email-filter-options {
+    margin-left: 40px;
 }
